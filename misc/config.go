@@ -29,6 +29,10 @@ type Configuration struct {
 	DebugTemplates bool
 	// HTTPHost represents the hostname:port the application should listen to for requests
 	HTTPHost string
+	// SlackTokens represents the (accepted) tokens issued by the Slack commands, used for authentication purposes
+	SlackTokens []string
+	// SlackWebhookURL represents the webhook URL provided by slack, used by the application to send chat messages
+	SlackWebhookURL string
 }
 
 // LoadConfig creates a Configuration by either using commandline flags or a configuration file, returning an error if the parsing failed

@@ -6,9 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/morpheusxaut/eveauth/database"
-	"github.com/morpheusxaut/eveauth/misc"
-	"github.com/morpheusxaut/eveauth/session"
+	"github.com/morpheusxaut/eveslackpings/misc"
 
 	"github.com/gorilla/mux"
 )
@@ -16,8 +14,6 @@ import (
 // Controller provides functionality for handling web requests and accessing session and backend data
 type Controller struct {
 	Config    *misc.Configuration
-	Database  database.Connection
-	Session   *session.Controller
 	Templates *Templates
 	Checksums *AssetChecksums
 
@@ -25,13 +21,11 @@ type Controller struct {
 }
 
 // SetupController prepares the web controller and initialises the router and handled routes
-func SetupController(config *misc.Configuration, db database.Connection, sessions *session.Controller, templates *Templates, checksums *AssetChecksums) *Controller {
+func SetupController(config *misc.Configuration) *Controller {
 	controller := &Controller{
 		Config:    config,
-		Database:  db,
-		Session:   sessions,
-		Templates: templates,
-		Checksums: checksums,
+		Templates: nil,
+		Checksums: nil,
 		router:    mux.NewRouter().StrictSlash(true),
 	}
 
@@ -63,7 +57,7 @@ func (controller *Controller) ServeHTTP(inner http.Handler, name string) http.Ha
 		}
 
 		if controller.Config.DebugTemplates {
-			controller.Templates.ReloadTemplates()
+			//controller.Templates.ReloadTemplates()
 		}
 
 		inner.ServeHTTP(w, r)

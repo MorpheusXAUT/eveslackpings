@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/morpheusxaut/eveauth/misc"
+	"github.com/morpheusxaut/eveslackpings/misc"
 )
 
 // SendResponse sends a response to the client by executing the templates and appending the asset checksum data
