@@ -38,7 +38,7 @@ type Configuration struct {
 // LoadConfig creates a Configuration by either using commandline flags or a configuration file, returning an error if the parsing failed
 func LoadConfig() (*Configuration, error) {
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: eveauth [options]\n")
+		fmt.Fprintf(os.Stderr, "Usage: eveslackpings [options]\n")
 		flag.PrintDefaults()
 		os.Exit(2)
 	}
