@@ -40,13 +40,13 @@ func (ping *Ping) Send(webhookURL string) error {
 				MarkdownIn: []string{"pretext", "text", "title", "fields", "fallback"},
 				Fields: []SlackAttachmentField{
 					SlackAttachmentField{
-						Title: "Sender:",
-						Value: ping.Sender,
+						Title: "Message:",
+						Value: ping.Message,
 						Short: false,
 					},
 					SlackAttachmentField{
-						Title: "Message:",
-						Value: ping.Message,
+						Title: "Sender:",
+						Value: ping.Sender,
 						Short: false,
 					},
 					SlackAttachmentField{
